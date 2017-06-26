@@ -63,5 +63,6 @@ platforms/*
 # End of https://www.gitignore.io/api/windows,apachecordova
 
 www/*
+!/www
 node_modules/*
 package-lock.json
