@@ -1,0 +1,160 @@
+{
+  "trip-nodes": [
+    {
+      "code": "KN",
+      "name": "KONAKLAMA",
+      "description": "Ev, yurt, arkadaş/akraba evi, arkadaş yurdu, otel, pansiyon vb."
+    },
+    {
+      "code": "DU",
+      "name": "DURAK",
+      "description": "Toplu taşıma (otobüs, dolmuş, metro, izban vb) durakları"
+    },
+    {
+      "code": "OK",
+      "name": "OKUL",
+      "description": "Eğitim gördüğünüz fakülte binası"
+    },
+    {
+      "code": "EG",
+      "name": "EĞİTİM",
+      "description": "Eğitim gördüğünüz fakülte binası dışındaki diğer eğitim yapıları/alanları (kütüphane, laboratuvar, ortak derslikler, farklı fakülte binaları, enstitü binaları, kurslar vb.)"
+    },
+    {
+      "code": "AL",
+      "name": "ALIŞVERİŞ",
+      "description": "Market, alışveriş merkezi, bakkal, kasap, manav, kırtasiye, pazar, fırın, mağaza, eczane vb."
+    },
+    {
+      "code": "Hİ",
+      "name": "HİZMET",
+      "description": "Banka, bankamatik, kuaför, hastane, kamu binaları, odalar ve dernekler vb."
+    },
+    {
+      "code": "SP",
+      "name": "SPOR/EGZERSİZ",
+      "description": "Spor salonu, park, sahil yolu, fuar alanı vb."
+    },
+    {
+      "code": "KÜ",
+      "name": "KÜLTÜREL",
+      "description": "Tiyatro, sinema, müze, sergi, fuar alanı, gençlik merkezi vb."
+    },
+    {
+      "code": "Yİ",
+      "name": "YEME/İÇME",
+      "description": "Kafe, bar, restoran, yemekhane, gece kulübü vb."
+    },
+    {
+      "code": "DG",
+      "name": "Diğer",
+      "description": "",
+      "other": true
+    }
+  ],
+
+  "trip-mods": [
+    {
+      "code": "Y",
+      "name": "YÜRÜYÜŞ",
+      "description": "Yürüyüş"
+    },
+    {
+      "code": "B",
+      "name": "BİSİKLET",
+      "description": "Bisiklet"
+    },
+    {
+      "code": "M",
+      "name": "MOTORLU TAŞIT",
+      "description": "Otobüs, servis, dolmuş, metro, izban, tramvay, özel araç, motosiklet, taksi"
+    }
+  ],
+
+  "walk-purpose": [
+    {
+      "code": "UA",
+      "name": "ULAŞIM AMAÇLI",
+      "description": "Evden okula, durağa, bankaya, hastaneye vb. gitmek, okuldan yemekhaneye, kafeye vb. gitmek gibi"
+    },
+    {
+      "code": "SP",
+      "name": "SPOR/EGZERSİZ AMAÇLI",
+      "description": "Kesintisiz tempolu yürümek, hareket etmek, form tutmak gibi"
+    },
+    {
+      "code": "KD",
+      "name": "KEYİF/DİNLENME AMAÇLI",
+      "description": "Arkadaşlarla dolaşmak, parkta gezinmek, dolaşarak alışveriz yapmak, amaçsız, kafa dağıtmak, temiz hava almak gibi"
+    }
+  ],
+
+  "walk-reason": [
+    {
+      "code": "MS",
+      "name": "MESAFE",
+      "description": "İki nokta arasındaki mesafe kısa gibi"
+    },
+    {
+      "code": "EK",
+      "name": "EKONOMİK",
+      "description": "Yürüyüş ekonomik açıdan daha uygun gibi"
+    },
+    {
+      "code": "MK",
+      "name": "MEVSİM KOŞULLARI",
+      "description": "Hava yürüyüş için uygun gibi"
+    },
+    {
+      "code": "ZM",
+      "name": "ZAMAN",
+      "description": "Yürümek için zaman var gibi"
+    },
+    {
+      "code": "KF",
+      "name": "KİŞİSEL FAKTÖRLER",
+      "description": "Sosyalleşmek, boş vakit geçirmek, gezmek, kafa dağıtmak için gibi"
+    },
+    {
+      "code": "SP",
+      "name": "SPOR/EGZERSİZ",
+      "description": "Spor/Egzersiz yapmak, hareket etmek için gibi"
+    },
+    {
+      "code": "ZR",
+      "name": "ZORUNLULUK",
+      "description": "Yürüyüş dışında seçenek (vasıta) yok gibi"
+    },
+    {
+      "code": "DE",
+      "name": "DESTİNASYON ÇEŞİTLİLİĞİ",
+      "description": "Yol üstünde birçok işin halledilebileceği çeşitlilikte yerler var (bakkal, manav, kasap, kafe, bankamatik, kırtasiye gibi)"
+    },
+    {
+      "code": "ES",
+      "name": "ESTETİK",
+      "description": "Manzara güzel, binalar ilgi çekici, peyzaj çok güzel gibi"
+    },
+    {
+      "code": "Eİ",
+      "name": "EĞİM",
+      "description": "Yolun eğimi yürüyüş için uygun gibi"
+    },
+    {
+      "code": "GÜ",
+      "name": "GÜVENLİK",
+      "description": "Yol güvenli gibi"
+    },
+    {
+      "code": "YY",
+      "name": "YAYA KONFORU",
+      "description": "Yaya yolu var, yürüyüş için uygun, kaldırımlar yürünebilir gibi"
+    },
+    {
+      "code": "DG",
+      "name": "Diğer",
+      "description": "",
+      "other": true
+    }
+  ]
+}
