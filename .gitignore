@@ -51,18 +51,18 @@ Temporary Items
 ### ApacheCordova ###
 # Apache Cordova generated files and directories
 bin/*
-plugins/*
-!/plugins
-!/plugins/android.json
-!/plugins/browser.json
-!/plugins/fetch.json
-platforms/*
-!/platforms
-!/platforms/platforms.json
+# plugins/*
+# !/plugins
+# !/plugins/android.json
+# !/plugins/browser.json
+# !/plugins/fetch.json
+# platforms/*
+# !/platforms
+# !/platforms/platforms.json
 
 # End of https://www.gitignore.io/api/windows,apachecordova
 
-www/*
+# www/*
 !/www
 node_modules/*
 package-lock.json

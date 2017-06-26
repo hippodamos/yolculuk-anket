@@ -7,21 +7,15 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.hippodamos.yolculukAnket"
-        },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.hippodamos.yolculukAnket"
         },
-        "cordova-plugin-x-socialsharing": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.hippodamos.yolculukAnket"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.hippodamos.yolculukAnket"
-        },
-        "es6-promise-plugin": {
             "PACKAGE_NAME": "com.hippodamos.yolculukAnket"
         }
     }
