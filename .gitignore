@@ -62,7 +62,6 @@ bin/*
 
 # End of https://www.gitignore.io/api/windows,apachecordova
 
-# www/*
-!/www
+www/*
 node_modules/*
 package-lock.json
