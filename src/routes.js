@@ -1,5 +1,9 @@
 export default [
   {
+    path: '/home/',
+    component: require('./assets/vue/pages/home.vue')
+  },
+  {
     path: '/trip-edit/:tripIndex',
     component: require('./assets/vue/pages/trip-edit-form.vue')
   },
@@ -15,4 +19,4 @@ export default [
     path: '/trip-stop/',
     component: require('./assets/vue/pages/trip-stop-form.vue')
   },
-]
+];

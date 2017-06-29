@@ -1,5 +1,5 @@
 {
-  "trip-nodes": [
+  "tripNodes": [
     {
       "code": "KN",
       "name": "KONAKLAMA",
@@ -53,7 +53,7 @@
     }
   ],
 
-  "trip-mods": [
+  "tripMods": [
     {
       "code": "Y",
       "name": "YÜRÜYÜŞ",
@@ -71,7 +71,7 @@
     }
   ],
 
-  "walk-purpose": [
+  "walkPurpose": [
     {
       "code": "UA",
       "name": "ULAŞIM AMAÇLI",
@@ -89,7 +89,7 @@
     }
   ],
 
-  "walk-reason": [
+  "walkReason": [
     {
       "code": "MS",
       "name": "MESAFE",

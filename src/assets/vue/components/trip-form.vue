@@ -4,30 +4,22 @@
       <f7-label>Başlangıç Tarihi</f7-label>
       <f7-input type="text" v-model="startDate" id="startDate" @change="startDate=$event.srcElement.value" placeholder="Başlangıç Tarihi"></f7-input>
     </f7-list-item>
+
     <f7-list-item v-if="!hide.includes('startTime')">
       <f7-label>Başlangıç Saati</f7-label>
       <f7-input type="text" v-model="startTime" id="startTime" @change="startTime=$event.srcElement.value" placeholder="Başlangıç Saati"></f7-input>
     </f7-list-item>
+
     <f7-list-item  v-if="!hide.includes('endDate')">
       <f7-label>Bitiş Tarihi</f7-label>
       <f7-input type="text" v-model="endDate" id="endDate" @change="endDate=$event.srcElement.value" placeholder="Bitiş Tarihi"></f7-input>
     </f7-list-item>
+
     <f7-list-item  v-if="!hide.includes('endTime')">
       <f7-label>Bitiş Saati</f7-label>
       <f7-input type="text" v-model="endTime" id="endTime" @change="endTime=$event.srcElement.value" placeholder="Bitiş Saati"></f7-input>
     </f7-list-item>
-    <!-- <f7-list-item>
-      <f7-label>Başlangıç Zamanı</f7-label>
-      <f7-input type="datetime-local" :value="startDateTime" @input="log($event)" ref="sdi"></f7-input>
-    </f7-list-item>
-    <f7-list-item> -->
-      <!-- <f7-label>Başlangıç Zamanı</f7-label>
-      <f7-input type="text" :value="startDateTime"></f7-input>
-    </f7-list-item>
-    <f7-list-item>
-      <f7-label>Bitiş Zamanı</f7-label>
-      <f7-input type="datetime-local" v-model="endDateTime" name="endDateTime"></f7-input>
-    </f7-list-item> -->
+
     <f7-list-item v-if="!hide.includes('departureNode')">
       <f7-label>Başlangıç Yeri</f7-label>
       <f7-input type="select" v-model="departureNode" name="departureNode">
@@ -36,11 +28,13 @@
           {{node.code }}: {{ node.name }}
         </option>
       </f7-input>
-    </f7-list-item v-if="!hide.includes('departureNode')">
+    </f7-list-item>
+
     <f7-list-item v-show="departureNode === 'DG'">
       <f7-label>Başlangıç Yeri (Diğer)</f7-label>
       <f7-input type="text" v-model="departureNodeOther"></f7-input>
     </f7-list-item>
+
     <f7-list-item v-if="!hide.includes('destinationNode')">
       <f7-label>Bitiş Yeri</f7-label>
       <f7-input type="select" v-model="destinationNode" name="destinationNode">
@@ -49,11 +43,13 @@
           {{node.code }}: {{ node.name }}
         </option>
       </f7-input>
-    </f7-list-item v-if="!hide.includes('destinationNode')">
+    </f7-list-item>
+
     <f7-list-item v-show="destinationNode === 'DG'">
       <f7-label>Bitiş Yeri (Diğer)</f7-label>
       <f7-input type="text" v-model="destinationNodeOther"></f7-input>
     </f7-list-item>
+
     <f7-list-item v-if="!hide.includes('mod')">
       <f7-label>Ulaşım Türeli</f7-label>
       <f7-input type="select" v-model="mod" name="mod" @change="mod !== 'Y' ? resetWalkOptions() : undefined">
@@ -63,6 +59,7 @@
         </option>
       </f7-input>
     </f7-list-item>
+
     <f7-list-item v-if="!hide.includes('walkPurpose')">
       <f7-label>Yürüyüş Amacı</f7-label>
       <f7-input type="select" v-model="walkPurpose" name="walkPurpose" :disabled="mod !== 'Y'">
@@ -72,6 +69,7 @@
         </option>
       </f7-input>
     </f7-list-item>
+
     <f7-list-item v-if="!hide.includes('walkReasons')">
       <f7-label>Yürüyüş Nedeni</f7-label>
       <f7-input type="select" name="walkReasons" v-model="walkReasons" multiple :disabled="mod !== 'Y'">
@@ -81,9 +79,15 @@
         </option>
       </f7-input>
     </f7-list-item>
+
     <f7-list-item v-if="!hide.includes('walkReasons')" v-show="walkReasons.indexOf('DG') != -1">
       <f7-label>Yürüyüş Nedeni (Diğer)</f7-label>
       <f7-input type="text" v-model="walkReasonOther"></f7-input>
+    </f7-list-item>
+
+    <f7-list-item v-if="!hide.includes('q1')">
+      <f7-label>Soru 1</f7-label>
+      <f7-input type="range" v-model="walkReasonOther"></f7-input>
     </f7-list-item>
   </f7-list>
 </template>
@@ -167,8 +171,6 @@ export default {
       result.startTime = this.startTime;
       result.endDate = this.endDate;
       result.endTime = this.endTime;
-      // result.startDateTime = this.startDateTime;
-      // result.endDateTime = this.endDateTime;
       result.departureNode = this.departureNode;
       result.departureNodeOther = this.departureNodeOther;
       result.destinationNode = this.destinationNode;
