@@ -30,7 +30,6 @@ export default {
 	},
 }
 </script>
-<style src="assets/css/framework7-icons.css"></style>
 <style>
 .dont-wrap {
 	white-space:pre;

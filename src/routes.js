@@ -1,22 +1,14 @@
 export default [
   {
-    path: '/home/',
-    component: require('./assets/vue/pages/home.vue')
+    path: '/surveyList/:listName',
+    component: require('./assets/vue/pages/survey-list.vue')
   },
   {
-    path: '/trip-edit/:tripIndex',
-    component: require('./assets/vue/pages/trip-edit-form.vue')
+    path: '/startTrip/:storeName',
+    component: require('./assets/vue/pages/trip-start.vue')
   },
   {
-    path: '/trip-new/',
-    component: require('./assets/vue/pages/trip-new-form.vue')
-  },
-  {
-    path: '/trip-start/',
-    component: require('./assets/vue/pages/trip-start-form.vue')
-  },
-  {
-    path: '/trip-stop/',
-    component: require('./assets/vue/pages/trip-stop-form.vue')
+    path: '/endTrip/:storeName',
+    component: require('./assets/vue/pages/trip-end.vue')
   },
 ];

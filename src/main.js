@@ -44,7 +44,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
   // Init App
-  new Vue({
+  let mainApp = new Vue({
     el: '#app',
 
     template: '<app/>',
@@ -76,4 +76,6 @@ function onDeviceReady() {
       });
     }
   });
+
+  window.$mainApp = mainApp;
 }

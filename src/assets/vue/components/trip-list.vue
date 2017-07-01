@@ -8,14 +8,13 @@
       :media="(index+1).toString()"
       :text="tripOptions.tripNodes[trip.departureNode] +	' -> ' + tripOptions.tripNodes[trip.destinationNode] + '\n' + tripOptions.tripMods[trip.mod]"
       @click="$emit('tripSelect', index)"
-      style="white-space: pre;">
+      style="white-space: pre;">{{trip}}
     </f7-list-item>
   </f7-list>
 
 </template>
 
 <script>
-import tripOptionsDefault from 'assets/js/trip-options.js'
 
 export default {
   props: {
@@ -25,7 +24,7 @@ export default {
     },
     tripOptions: {
       type: Object,
-      default: tripOptionsDefault
+      default: require('assets/js/trip-options.js')
     }
   },
 

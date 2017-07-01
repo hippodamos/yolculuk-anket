@@ -24,13 +24,13 @@
       <f7-label>Başlangıç Yeri</f7-label>
       <f7-input type="select" v-model="departureNode" name="departureNode">
         <option value="" selected="true" disabled>Seçiniz</option>
-        <option v-for="node in this.tripOptions['trip-nodes']" :value="node.code" :data-display-as="node.code + ': ' + node.name">
-          {{node.code }}: {{ node.name }}
+        <option v-for="node in this.tripOptions.tripNodes" :value="node.code" :data-display-as="node.code + ': ' + node.name">
+          {{ node.code }}: {{ node.name }}
         </option>
       </f7-input>
     </f7-list-item>
 
-    <f7-list-item v-show="departureNode === 'DG'">
+    <f7-list-item v-if="!hide.includes('departureNode')" v-show="departureNode === 'DG'">
       <f7-label>Başlangıç Yeri (Diğer)</f7-label>
       <f7-input type="text" v-model="departureNodeOther"></f7-input>
     </f7-list-item>
@@ -39,13 +39,13 @@
       <f7-label>Bitiş Yeri</f7-label>
       <f7-input type="select" v-model="destinationNode" name="destinationNode">
         <option value="" selected="true" disabled>Seçiniz</option>
-        <option v-for="node in this.tripOptions['trip-nodes']" :value="node.code" :data-display-as="node.code + ': ' + node.name">
+        <option v-for="node in this.tripOptions.tripNodes" :value="node.code" :data-display-as="node.code + ': ' + node.name">
           {{node.code }}: {{ node.name }}
         </option>
       </f7-input>
     </f7-list-item>
 
-    <f7-list-item v-show="destinationNode === 'DG'">
+    <f7-list-item v-if="!hide.includes('destinationNode')" v-show="destinationNode === 'DG'">
       <f7-label>Bitiş Yeri (Diğer)</f7-label>
       <f7-input type="text" v-model="destinationNodeOther"></f7-input>
     </f7-list-item>
@@ -54,7 +54,7 @@
       <f7-label>Ulaşım Türeli</f7-label>
       <f7-input type="select" v-model="mod" name="mod" @change="mod !== 'Y' ? resetWalkOptions() : undefined">
         <option value="" selected="true" disabled>Seçiniz</option>
-        <option v-for="mode in this.tripOptions['trip-mods']" :value="mode.code" :data-display-as="mode.code + ': ' + mode.name">
+        <option v-for="mode in this.tripOptions.tripMods" :value="mode.code" :data-display-as="mode.code + ': ' + mode.name">
           {{mode.code }}: {{ mode.name }}
         </option>
       </f7-input>
@@ -64,7 +64,7 @@
       <f7-label>Yürüyüş Amacı</f7-label>
       <f7-input type="select" v-model="walkPurpose" name="walkPurpose" :disabled="mod !== 'Y'">
         <option value="" selected="true" disabled>Seçiniz</option>
-        <option v-for="item in this.tripOptions['walk-purpose']" :value="item.code" :data-display-as="item.code + ': ' + item.name">
+        <option v-for="item in this.tripOptions.walkPurpose" :value="item.code" :data-display-as="item.code + ': ' + item.name">
           {{item.code }}: {{ item.name }}
         </option>
       </f7-input>
@@ -72,22 +72,21 @@
 
     <f7-list-item v-if="!hide.includes('walkReasons')">
       <f7-label>Yürüyüş Nedeni</f7-label>
-      <f7-input type="select" name="walkReasons" v-model="walkReasons" multiple :disabled="mod !== 'Y'">
-        <!-- <option value="" selected="true" disabled>Seçiniz</option> -->
-        <option v-for="item in this.tripOptions['walk-reason']" :value="item.code" :data-display-as="item.code + ': ' + item.name">
+      <f7-input type="select" name="walkReasons" v-model.lazy="walkReasonsArray" multiple :disabled="mod !== 'Y'">
+        <option v-for="item in this.tripOptions.walkReason" :value="item.code" :data-display-as="item.code + ': ' + item.name">
           {{item.code }}: {{ item.name }}
         </option>
       </f7-input>
     </f7-list-item>
 
-    <f7-list-item v-if="!hide.includes('walkReasons')" v-show="walkReasons.indexOf('DG') != -1">
+    <f7-list-item v-if="!hide.includes('walkReasons')" v-show="walkReasonsArray.indexOf('DG') != -1">
       <f7-label>Yürüyüş Nedeni (Diğer)</f7-label>
       <f7-input type="text" v-model="walkReasonOther"></f7-input>
     </f7-list-item>
 
-    <f7-list-item v-if="!hide.includes('q1')">
+    <f7-list-item v-if="!hide.includes('questions')">
       <f7-label>Soru 1</f7-label>
-      <f7-input type="range" v-model="walkReasonOther"></f7-input>
+      <f7-input type="range" v-model="q1"></f7-input>
     </f7-list-item>
   </f7-list>
 </template>
@@ -125,38 +124,41 @@ function timePickerFormat(p, values, displayValues) {
 }
 
 function timePickerParse(value) {
-  let res = value.split(':');
-  if (res.length == 2) {
-    return res
-  } else {
-    return undefined
+  if (value) {
+    let res = value.split(':');
+    if (res.length == 2) {
+      return res
+    } else {
+      return undefined
+    }
   }
 }
 
 export default {
   data: function () {
     return {
-      startDate: this.tripData ? this.tripData.startDate : "",
-      startTime: this.tripData ? this.tripData.startTime : "",
-      endDate: this.tripData ? this.tripData.endDate : "",
-      endTime: this.tripData ? this.tripData.endTime : "",
-      // startDateTime : this.tripData ? this.tripData.startDateTime : "",
-      // endDateTime : this.tripData ? this.tripData.endDateTime : "",
-      departureNode: this.tripData ? this.tripData.departureNode : "",
-      departureNodeOther: this.tripData ? this.tripData.departureNodeOther : "",
-      destinationNode: this.tripData ? this.tripData.destinationNode : "",
-      destinationNodeOther: this.tripData ? this.tripData.destinationNodeOther : "",
-      mod: this.tripData ?  this.tripData.mod : "",
-      walkPurpose: this.tripData ? this.tripData.walkPurpose : "",
-      walkReasons: this.tripData ? this.tripData.walkReasons : [],
-      walkReasonOther: this.tripData ? this.tripData.walkReasonOther : [],
+      startDate: this.initialData.startDate || null,
+      startTime: this.initialData.startTime || null,
+      endDate: this.initialData.endDate || null,
+      endTime: this.initialData.endTime || null,
+      departureNode: this.initialData.departureNode || null,
+      departureNodeOther: this.initialData.departureNodeOther || null,
+      destinationNode: this.initialData.destinationNode || null,
+      destinationNodeOther: this.initialData.destinationNodeOther || null,
+      mod: this.initialData.mod || null,
+      walkPurpose: this.initialData.walkPurpose || null,
+      walkReasons: this.initialData.walkReasons || null,
+      walkReasonOther: this.initialData.walkReasonOther || null,
+      q1: this.initialData.q1 || null,
     };
   },
 
-  // props: ["tripOptions", "tripData", ],
   props: {
     tripOptions: null,
-    tripData: null,
+    initialData: {
+      type: Object,
+      default: () => {return {}}
+    },
     hide: {
       type: Array,
       default: function () {return []}
@@ -164,39 +166,45 @@ export default {
   },
 
   computed: {
-    trip: function () {
-      let result = Trip();
-
-      result.startDate = this.startDate;
-      result.startTime = this.startTime;
-      result.endDate = this.endDate;
-      result.endTime = this.endTime;
-      result.departureNode = this.departureNode;
-      result.departureNodeOther = this.departureNodeOther;
-      result.destinationNode = this.destinationNode;
-      result.destinationNodeOther = this.destinationNodeOther;
-      result.mod = this.mod;
-      result.walkPurpose = this.walkPurpose;
-      result.walkReasons = this.walkReasons;
-      result.walkReasonOther = this.walkReasonOther;
-
+    formData () {
+      let result = {}
+      for (let key in this.$data) {
+        if (this[key]) result[key] = this[key]
+      }
       return result;
     },
-  },
 
-  methods: {
-    resetWalkOptions: function() {
-      this.walkPurpose = "";
-      this.walkReasons.splice(0);
-      this.walkReasonOther = "";
-    },
+    walkReasonsArray: {
+      get: function () {
+        if (this.walkReasons) {
+          return this.walkReasons.split();
+        }
+        else {
+          return [];
+        }
+      },
 
-    log: function(param) {
-      console.log(param)
+      set: function (newValue) {
+        this.walkReasons = newValue.join(" ");
+      }
     }
   },
 
-  mounted: function() {
+  methods: {
+    resetWalkOptions () {
+      this.walkPurpose = null;
+      this.walkReasons = null;
+      this.walkReasonOther = null;
+    },
+  },
+
+  watch: {
+    formData () {
+      this.$emit('formChange', this.formData);
+    }
+  },
+
+  mounted () {
     this.$f7.calendar({input: "#startDate", closeOnSelect: true, monthNames,
                         monthNamesShort, dayNames, dayNamesShort})
     this.$f7.calendar({input: "#endDate", closeOnSelect: true, monthNames,

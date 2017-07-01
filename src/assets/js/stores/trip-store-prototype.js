@@ -2,7 +2,8 @@ export default function () {
   return {
     state () {
       return {
-        trips: []
+        trips: [],
+        currentTrip: null
       };
     },
     mutations: {
@@ -18,6 +19,9 @@ export default function () {
       clear (state) {
         state.trips.splice(0);
       },
+      registerCurrentTrip (state, payload) {
+        state.currentTrip = payload;
+      }
     },
   };
 }

@@ -6,10 +6,14 @@ function State () {
   };
 }
 
+export const storageName = 'userInfo';
+
 function initStore() {
+  let storage = localStorage.getItem(storageName);
+
   return {
     namespaced: true,
-    state: State,
+    state: storage ? JSON.parse(storage) : State,
     mutations: {
       change (state, payload) {
         if (payload.name) {
@@ -22,12 +26,17 @@ function initStore() {
           state.deviceCode = payload.deviceCode;
         }
       }
-    }
+    },
   };
 }
 
 export let mixin = {
   created () {
-    this.$store.registerModule('userInfo', initStore());
+    this.$store.registerModule(storageName, initStore());
+    this.$store.subscribe((mutation, state) => {
+      if(mutation.type == 'userInfo/change') {
+        localStorage.setItem(storageName, JSON.stringify(state.userInfo));
+      }
+    });
   }
 };
