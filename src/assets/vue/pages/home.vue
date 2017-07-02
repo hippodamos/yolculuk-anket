@@ -27,14 +27,18 @@
                   title="Kısa Anketler"
                   :count="$store.state.shortSurveys.trips.length"
                   :currentTrip="$store.state.shortSurveys.currentTrip"
-                  @openSurveyList="$f7.mainView.router.loadPage('/surveyList/shortSurveys')">
+                  @openSurveyList="$f7.mainView.router.loadPage('/surveyList/shortSurveys')"
+                  @startTrip="$router.loadPage('/startTrip/shortSurveys')"
+                  @endTrip="$router.loadPage('/endTrip/shortSurveys')">
     </survey-card>
 
     <survey-card
                   title="Uzun Anketler"
                   :count="$store.state.longSurveys.trips.length"
                   :currentTrip="$store.state.longSurveys.currentTrip"
-                  @openSurveyList="$f7.mainView.router.loadPage('/surveyList/longSurveys')">
+                  @openSurveyList="$f7.mainView.router.loadPage('/surveyList/longSurveys')"
+                  @startTrip="$router.loadPage('/startTrip/longSurveys')"
+                  @endTrip="$router.loadPage('/endTrip/longSurveys')">
     </survey-card>
 
   </f7-page>
