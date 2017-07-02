@@ -28,8 +28,13 @@
                   :count="$store.state.shortSurveys.trips.length"
                   :currentTrip="$store.state.shortSurveys.currentTrip"
                   @openSurveyList="$f7.mainView.router.loadPage('/surveyList/shortSurveys')"
+<<<<<<< HEAD
                   @startTrip="$f7.mainView.router.loadPage('/startTrip/shortSurveys')"
                   @endTrip="$f7.mainView.router.loadPage('/endTrip/shortSurveys')">
+=======
+                  @startTrip="$router.loadPage('/startTrip/shortSurveys')"
+                  @endTrip="$router.loadPage('/endTrip/shortSurveys')">
+>>>>>>> 8b699a6d786042b5f70d403a0d5d34d635f62e98
     </survey-card>
 
     <survey-card
@@ -37,8 +42,13 @@
                   :count="$store.state.longSurveys.trips.length"
                   :currentTrip="$store.state.longSurveys.currentTrip"
                   @openSurveyList="$f7.mainView.router.loadPage('/surveyList/longSurveys')"
+<<<<<<< HEAD
                   @startTrip="$f7.mainView.router.loadPage('/startTrip/longSurveys')"
                   @endTrip="$f7.mainView.router.loadPage('/endTrip/longSurveys')">
+=======
+                  @startTrip="$router.loadPage('/startTrip/longSurveys')"
+                  @endTrip="$router.loadPage('/endTrip/longSurveys')">
+>>>>>>> 8b699a6d786042b5f70d403a0d5d34d635f62e98
     </survey-card>
 
   </f7-page>
