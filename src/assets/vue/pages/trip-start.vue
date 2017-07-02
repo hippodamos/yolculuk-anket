@@ -11,7 +11,8 @@
     </trip-form>
     <f7-list>
       <f7-list-button @click="startTrip">Başlat</f7-list-button>
-      <f7-list-button color="red" @click="$router.back()">İptal</f7-list-button>
+      <f7-list-item divider></f7-list-item>
+      <f7-list-button color="black" @click="$router.back()">İptal</f7-list-button>
     </f7-list>
   </f7-page>
 </template>

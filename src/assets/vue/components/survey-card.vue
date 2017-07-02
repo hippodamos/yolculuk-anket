@@ -12,7 +12,7 @@
             <trip-current
                           :currentTrip="currentTrip"
                           @startTrip="$emit('startTrip')"
-                          @stopTrip="$emit('stopTrip')">
+                          @endTrip="$emit('endTrip')">
             </trip-current>
           </f7-accordion-content>
         </f7-list-item>

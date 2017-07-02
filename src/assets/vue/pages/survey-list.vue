@@ -5,16 +5,19 @@
     <f7-navbar :title="'Anketler'" back-link="Geri">
     </f7-navbar>
 
+    <f7-block-title>Aktif Yolculuk</f7-block-title>
     <trip-current
                   :tripOptions="$store.state.tripOptions"
-                  :currentTrip="$store.state[listName].currentTrip"
-                  @startTrip="$router.loadPage('/startTrip/'+listName)"
-                  @endTrip="$router.loadPage('/endTrip/'+listName)">
+                  :currentTrip="$store.state[storeName].currentTrip"
+                  @startTrip="$router.loadPage('/startTrip/'+storeName)"
+                  @endTrip="$router.loadPage('/endTrip/'+storeName)">
     </trip-current>
 
+    <f7-block-title>Yolculuk Listesi</f7-block-title>
     <trip-list
                 :tripOptions="$store.state.tripOptions"
-                :trips="$store.state[listName].trips">
+                :trips="$store.state[storeName].trips"
+                @tripSelect="editTrip">
     </trip-list>
 
   </f7-page>
@@ -23,6 +26,12 @@
 
 <script>
 export default {
+  data () {
+    return {
+      storeName: this.listName
+    }
+  },
+
   components: {
     "trip-current": require("assets/vue/components/trip-current.vue"),
     "trip-list": require("assets/vue/components/trip-list.vue")
@@ -32,8 +41,11 @@ export default {
     listName: String,
   },
 
-  // TODO: Delete this before production
-  created () {console.log(this)}
+  methods: {
+    editTrip(payload) {
+      this.$router.load({url:"/editTrip/"+this.storeName+"/"+payload})
+    }
+  },
 }
 </script>
 

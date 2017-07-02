@@ -6,9 +6,9 @@
       :title="formatDate(trip.startDate)"
       :after="trip.startTime"
       :media="(index+1).toString()"
-      :text="tripOptions.tripNodes[trip.departureNode] +	' -> ' + tripOptions.tripNodes[trip.destinationNode] + '\n' + tripOptions.tripMods[trip.mod]"
+      :text="formatText(trip)"
       @click="$emit('tripSelect', index)"
-      style="white-space: pre;">{{trip}}
+      style="white-space: pre;">
     </f7-list-item>
   </f7-list>
 
@@ -34,6 +34,14 @@ export default {
 			let dayStr = d.toLocaleDateString(undefined, {weekday: "long"})
 			return dayStr + ' ' + d.toLocaleDateString()
 		},
+
+    formatText (trip) {
+      let text = "";
+      if (trip.departureNode) text += this.tripOptions.tripNodes[trip.departureNode].name;
+      if (trip.destinationNode) text += " -> " + this.tripOptions.tripNodes[trip.destinationNode].name;
+      if (trip.mod) text += "\n" + this.tripOptions.tripMods[trip.mod].name;
+      return text;
+    },
   }
 }
 </script>
