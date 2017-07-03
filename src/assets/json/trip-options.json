@@ -156,5 +156,75 @@
       "description": "",
       "other": true
     }
+  ],
+
+  "questions": [
+    {
+      "code": "Q1",
+      "question": "Yürüdüğüm güzergah akılda kalıcı, diğerlerinden farklı ve ayırt edilebilir özelliklere sahip"
+    },
+    {
+      "code": "Q2",
+      "question": "Yürüdüğüm güzergah tanımsız boş alanlar içermiyor ve binalar, ağaçlar gibi dikey unsurlarla tanımlanmış durumda"
+    },
+    {
+      "code": "Q3",
+      "question": "Yürüdüğüm güzeraghta buluna yapısal unsurlar (bina, ağaç vb. yükseklikleri, sokak, meydan, açık alan vb. genişlikleri, banklar, aydınlatmalar, yer döşemeleri, çöp kutuları vb. boyutları) insan ölçeğine uygun"
+    },
+    {
+      "code": "Q4",
+      "question": "Yürüdüğüm güzergahın her iki yanı kapılar, pencereler, dükkan vitrinleri gibi açıklıklar vasıtasıyla görülebilir ve algılanabilir"
+    },
+    {
+      "code": "Q5",
+      "question": "Yürüdüğüm güzergah görsel anlamda çeşitlilik ve zenginlik barındırıyor (birbirinden farklı binalar, mimari çeşitlilik ve süslemeler, peyzaj çeşitliliği, sokak mobilyaları vb. var)"
+    },
+    {
+      "code": "Q6",
+      "question": "Yürüdüğüm güzergahta bulunan binalar, ağaçlar, sokak mobilyaları, aydınlatmalar, yer döşemeleri vb. birbiri ile tutarlı ve görsel bir uyum içinde"
+    },
+    {
+      "code": "Q7",
+      "question": "Yürüdüğüm güzergah tümüyle anlaşılır ve kaybolma hissi uyandırmıyor (sokak kesişimlerinde yön bulma kolaylığı, yön ve işaret tabelalarının anlaşılır olması, çevre hakimiyeti kurabilme vb.)"
+    },
+    {
+      "code": "Q8",
+      "question": "Yürdüğüm güzergah üzerinde binadan sokağa, binadan binaya ya da sokağın bir tarafından diğer tarafına geçişlerde erişim kolay"
+    },
+    {
+      "code": "Q9",
+      "question": "Yürüdüğüm güzergahta insan hareketliliği var"
+    },
+    {
+      "code": "Q10",
+      "question": "Yürüdüğüm güzergah yayalar için güvenli (kaldırımlar sürekli devam ediyor, taşıt yolundan yürümek zorunda kalınmıyor, taşıt yolundan yürümek zorunda kalındığında trafik tehlikeli düzeyde değil, karşıda karşıya geçmek kontrollü ve güvenli vb.)"
+    },
+    {
+      "code": "Q11",
+      "question": "Yürüdüğüm güzergah üzerinde bulunan yapısal unsurlar (bina cepheleri, banklar, aydınlatmalar, yer döşemeleri, çöp kutuları, peyzaj vb.) bakımlı, güzel ve malzeme kalitesi iyi"
+    }
+  ],
+
+  "ratings": [
+    {
+      "code": 1,
+      "value": "Kesinlikle Katılmıyorum"
+    },
+    {
+      "code": 2,
+      "value": "Katılmıyorum"
+    },
+    {
+      "code": 3,
+      "value": "Fikrim Yok/Nötr"
+    },
+    {
+      "code": 4,
+      "value": "Katılıyorum"
+    },
+    {
+      "code": 5,
+      "value": "Kesinlikle Katılıyorum"
+    }
   ]
 }

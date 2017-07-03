@@ -52,7 +52,7 @@
 
     <f7-list-item v-if="!hide.includes('mod')">
       <f7-label>Ulaşım Türeli</f7-label>
-      <f7-input type="select" v-model="mod" name="mod" @change="mod !== 'Y' ? resetWalkOptions() : undefined">
+      <f7-input type="select" v-model="mod" name="mod" @change="mod === 'Y' ? setWalkOptions() :unsetWalkOptions()">
         <option value="" selected="true" disabled>Seçiniz</option>
         <option v-for="mode in this.tripOptions.tripMods" :value="mode.code" :data-display-as="mode.code + ': ' + mode.name">
           {{mode.code }}: {{ mode.name }}
@@ -72,22 +72,43 @@
 
     <f7-list-item v-if="!hide.includes('walkReasons')">
       <f7-label>Yürüyüş Nedeni</f7-label>
-      <f7-input type="select" name="walkReasons" v-model.lazy="walkReasonsArray" multiple :disabled="mod !== 'Y'">
+      <f7-input type="select" name="walkReasons" v-model.lazy="walkReasons" multiple :disabled="mod !== 'Y'">
         <option v-for="item in this.tripOptions.walkReason" :value="item.code" :data-display-as="item.code + ': ' + item.name">
-          {{item.code }}: {{ item.name }}
+          {{ item.code }}: {{ item.name }}
         </option>
       </f7-input>
     </f7-list-item>
 
-    <f7-list-item v-if="!hide.includes('walkReasons')" v-show="walkReasonsArray.indexOf('DG') != -1">
+    <f7-list-item v-if="!hide.includes('walkReasons')" v-show="walkReasons.indexOf('DG') != -1">
       <f7-label>Yürüyüş Nedeni (Diğer)</f7-label>
       <f7-input type="text" v-model="walkReasonOther"></f7-input>
     </f7-list-item>
 
-    <f7-list-item v-if="!hide.includes('questions')">
-      <f7-label>Soru 1</f7-label>
-      <f7-input type="range" v-model="q1"></f7-input>
+    <f7-list-item divider></f7-list-item>
+
+    <f7-list-item
+                  v-if="!hide.includes('questions')"
+                  v-show="mod === 'Y'"
+                  v-for="quest in tripOptions.questions">
+      <div style="display: block; width:100%">
+        <div>{{quest.question}}</div>
+        <div style="display: flex">
+          <span>1</span>
+          <f7-input
+                    type="range"
+                    :min="1"
+                    :max="5"
+                    :step="1"
+                    @input="questionChange(quest, $event)"
+                    :value="$data[quest.code]"
+                    style="margin-left: 10px; margin-right: 10px;">
+          </f7-input>
+          <span>5</span>
+        </div>
+        <div style="text-align: center; color: blue;">{{$data[quest.code] ? $data[quest.code] + ': ' + tripOptions.ratings[$data[quest.code]].value : null}}</div>
+      </div>
     </f7-list-item>
+
   </f7-list>
 </template>
 <script>
@@ -147,9 +168,19 @@ export default {
       destinationNodeOther: this.initialData.destinationNodeOther || null,
       mod: this.initialData.mod || null,
       walkPurpose: this.initialData.walkPurpose || null,
-      walkReasons: this.initialData.walkReasons || null,
+      walkReasons: this.initialData.walkReasons ? this.initialData.walkReasons.split(" ") : [],
       walkReasonOther: this.initialData.walkReasonOther || null,
-      q1: this.initialData.q1 || null,
+      Q1: this.initialData.Q2 || null,
+      Q2: this.initialData.Q2 || null,
+      Q3: this.initialData.Q3 || null,
+      Q4: this.initialData.Q4 || null,
+      Q5: this.initialData.Q5 || null,
+      Q6: this.initialData.Q6 || null,
+      Q7: this.initialData.Q7 || null,
+      Q8: this.initialData.Q8 || null,
+      Q9: this.initialData.Q9 || null,
+      Q10: this.initialData.Q10 || null,
+      Q11: this.initialData.Q11 || null,
     };
   },
 
@@ -167,9 +198,17 @@ export default {
 
   computed: {
     formData () {
-      let result = {}
+      let result = {};
       for (let key in this.$data) {
-        if (this[key]) result[key] = this[key]
+        if (this[key]) {
+          if (Array.isArray(this[key]))
+          {
+            if (this[key].length > 0) result[key] = this[key].join(" ");
+          }
+          else {
+            result[key] = this[key];
+          }
+        }
       }
       return result;
     },
@@ -191,10 +230,23 @@ export default {
   },
 
   methods: {
-    resetWalkOptions () {
+    questionChange (quest, event) {
+      this[quest.code] = event
+    },
+
+    setWalkOptions () {
+      for (let key in this.tripOptions.questions) {
+        this[key] = 3;
+      }
+    },
+
+    unsetWalkOptions () {
       this.walkPurpose = null;
-      this.walkReasons = null;
+      this.walkReasons = [];
       this.walkReasonOther = null;
+      for (let key in this.tripOptions.questions) {
+        this[key] = null;
+      }
     },
   },
 
