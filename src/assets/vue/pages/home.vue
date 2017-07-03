@@ -56,7 +56,7 @@ export default {
     userInfo () {
       return this.$store.state.userInfo
     }
-  }
+  },
 }
 
 </script>
