@@ -51,6 +51,17 @@ export default {
       this.$f7.closeModal();
     },
   },
+
+  mounted () {
+    document.addEventListener('backbutton', (ev) => {
+      if (this.$f7.getCurrentView().activePage.url == '#null') {
+        navigator.app.exitApp();
+      }
+      else {
+        this.$f7.getCurrentView().router.back();
+      }
+    });
+  }
 }
 </script>
 

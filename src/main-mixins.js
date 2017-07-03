@@ -1,5 +1,5 @@
 // Version updater
-import {mixin as versionUpdaterMixin} from 'assets/js/version-updater.js'
+import {mixin as versionUpdaterMixin} from 'assets/js/version-updater.js';
 
 // Short and long surveys store
 import {mixin as mainStoreMixin} from 'assets/js/stores/main-store.js';
@@ -8,10 +8,20 @@ import {mixin as tripOptionsStoreMixin} from 'assets/js/stores/trip-options-stor
 //Trip Options store
 import {mixin as userInfoStoreMixin} from 'assets/js/stores/user-info-store.js';
 
+let loginStartup = {
+  mounted () {
+    if (!this.$store.state.userInfo.name && !this.$store.state.userInfo.surname) {
+      this.$f7.loginScreen();
+    }
+  }
+};
+
 export default [
   versionUpdaterMixin,
 
   mainStoreMixin,
   tripOptionsStoreMixin,
-  userInfoStoreMixin
+  userInfoStoreMixin,
+
+  loginStartup
 ];

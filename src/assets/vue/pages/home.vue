@@ -24,7 +24,7 @@
     </f7-card>
 
     <survey-card
-                  title="Kısa Anketler"
+                  title="6 Gün Doldurulacak Anketler"
                   :count="$store.state.shortSurveys.trips.length"
                   :currentTrip="$store.state.shortSurveys.currentTrip"
                   @openSurveyList="$f7.mainView.router.loadPage('/surveyList/shortSurveys')"
@@ -33,7 +33,7 @@
     </survey-card>
 
     <survey-card
-                  title="Uzun Anketler"
+                  title="1 Gün Doldurulacak Anketler"
                   :count="$store.state.longSurveys.trips.length"
                   :currentTrip="$store.state.longSurveys.currentTrip"
                   @openSurveyList="$f7.mainView.router.loadPage('/surveyList/longSurveys')"

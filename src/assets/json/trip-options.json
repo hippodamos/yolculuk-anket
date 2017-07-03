@@ -169,7 +169,7 @@
     },
     {
       "code": "Q3",
-      "question": "Yürüdüğüm güzeraghta buluna yapısal unsurlar (bina, ağaç vb. yükseklikleri, sokak, meydan, açık alan vb. genişlikleri, banklar, aydınlatmalar, yer döşemeleri, çöp kutuları vb. boyutları) insan ölçeğine uygun"
+      "question": "Yürüdüğüm güzeraghta bulunan yapısal unsurlar (bina, ağaç vb. yükseklikleri, sokak, meydan, açık alan vb. genişlikleri, banklar, aydınlatmalar, yer döşemeleri, çöp kutuları vb. boyutları) insan ölçeğine uygun"
     },
     {
       "code": "Q4",
@@ -208,23 +208,23 @@
   "ratings": [
     {
       "code": 1,
-      "value": "Kesinlikle Katılmıyorum"
+      "description": "Kesinlikle Katılmıyorum"
     },
     {
       "code": 2,
-      "value": "Katılmıyorum"
+      "description": "Katılmıyorum"
     },
     {
       "code": 3,
-      "value": "Fikrim Yok/Nötr"
+      "description": "Fikrim Yok/Nötr"
     },
     {
       "code": 4,
-      "value": "Katılıyorum"
+      "description": "Katılıyorum"
     },
     {
       "code": 5,
-      "value": "Kesinlikle Katılıyorum"
+      "description": "Kesinlikle Katılıyorum"
     }
   ]
 }

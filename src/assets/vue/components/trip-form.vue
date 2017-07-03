@@ -84,30 +84,31 @@
       <f7-input type="text" v-model="walkReasonOther"></f7-input>
     </f7-list-item>
 
-    <f7-list-item divider></f7-list-item>
+    <!-- <f7-list-item divider></f7-list-item> -->
+    <f7-list-group>
+      <f7-list-item group-title title="Değerlendirme"></f7-list-item>
 
-    <f7-list-item
-                  v-if="!hide.includes('questions')"
-                  v-show="mod === 'Y'"
-                  v-for="quest in tripOptions.questions">
-      <div style="display: block; width:100%">
-        <div>{{quest.question}}</div>
-        <div style="display: flex">
-          <span>1</span>
-          <f7-input
-                    type="range"
-                    :min="1"
-                    :max="5"
-                    :step="1"
-                    @input="questionChange(quest, $event)"
-                    :value="$data[quest.code]"
-                    style="margin-left: 10px; margin-right: 10px;">
-          </f7-input>
-          <span>5</span>
+      <f7-list-item
+                    v-if="!hide.includes('questions')"
+                    v-show="mod === 'Y'"
+                    v-for="quest in tripOptions.questions"
+                    smart-select
+                    smart-select-open-in="picker"
+                    smart-select-back-text="Geri"
+                    smart-select-back-on-select>
+        <div slot="root-start" style="text-align: center; padding: 15px 15px 0px 15px; font-size: medium;">
+          {{quest.question}}
         </div>
-        <div style="text-align: center; color: blue;">{{$data[quest.code] ? $data[quest.code] + ': ' + tripOptions.ratings[$data[quest.code]].value : null}}</div>
-      </div>
-    </f7-list-item>
+        <select name="quest.code" v-model="$data[quest.code]">
+          <option :value="null" selected disabled>Seçiniz</option>
+          <option
+                  v-for="rating in tripOptions.ratings"
+                  :value="rating.code">
+            {{rating.code + ":" + rating.description}}
+          </option>
+        </select>
+      </f7-list-item>
+    </f7-list-group>
 
   </f7-list>
 </template>
@@ -235,9 +236,6 @@ export default {
     },
 
     setWalkOptions () {
-      for (let key in this.tripOptions.questions) {
-        this[key] = 3;
-      }
     },
 
     unsetWalkOptions () {

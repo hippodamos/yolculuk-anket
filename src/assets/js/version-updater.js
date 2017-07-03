@@ -3,8 +3,11 @@ export let mixin = {
     let prevVersion = localStorage.getItem("version");
 
     switch (prevVersion) {
+      case "2.1.0": {
+        break;
+      }
       case "2.0.0": {
-        ;
+        break;
       }
       case undefined: {
         localStorage.clear();
@@ -12,4 +15,4 @@ export let mixin = {
       }
     }
   }
-}
+};

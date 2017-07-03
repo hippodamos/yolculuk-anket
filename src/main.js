@@ -55,7 +55,9 @@ function onDeviceReady() {
       root: '#app',
       /* Uncomment to enable Material theme: */
       // material: true,
-      routes: Routes
+      routes: Routes,
+      modalButtonOk: "Tamam",
+      modalButtonCancel: "İptal",
     },
     // Register App Component
     components: {
