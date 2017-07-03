@@ -15,4 +15,8 @@ export default [
     path: '/editTrip/:storeName/:tripIndex',
     component: require('assets/vue/pages/trip-edit.vue')
   },
+  {
+    path: '/addTrip/:listName',
+    component: require('assets/vue/pages/trip-add.vue')
+  },
 ];
